@@ -1,10 +1,8 @@
 var sketchProc = function(processingInstance) {
     with (processingInstance) {
-        
-        size(400, 500); // Sets the canvas size
-        background(255, 255, 255); // White background
+        size(400, 500); 
+        background(255, 255, 255); 
 
-        // sophie's hand behind her
         stroke(187, 125, 67);
         fill(187, 125, 67);
         beginShape();
@@ -64,7 +62,6 @@ var sketchProc = function(processingInstance) {
         bezierVertex(130, 235, 128, 236, 123, 237);
         endShape();
 
-        // cape and face
         fill(112, 65, 150);
         beginShape();
         vertex(156, 229);
@@ -192,9 +189,6 @@ var sketchProc = function(processingInstance) {
         bezierVertex(199, 275, 199, 266, 193, 264);
         bezierVertex(193, 264, 182, 276, 179, 279);
         endShape();
-
-
-
     }
 };
 
