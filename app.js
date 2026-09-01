@@ -6,7 +6,7 @@ window.program = function(processingInstance) {
         var angleY = 0;
 
         draw = function() {
-            background(20, 20, 30);
+            background(25, 20, 30);
             ambientLight(100, 100, 150);
             directionalLight(255, 255, 255, 1, 1, -1);
             translate(200, 200, 0);
