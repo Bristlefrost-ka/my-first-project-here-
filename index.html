@@ -1,585 +1,67 @@
 <!DOCTYPE html>
-<!--Time for me to finally learn how to make decent webpages...
-
-
-
-pls help anyone -_-
-
-
-eepsies i finaly did pages... lol
+<html lang="en">
+<!-- Program exported to HTML using the KA Project Exporter by @MushyAvocado 
+https://www.khanacademy.org/computer-programming/ka-project-exporter/5195486791385088
 -->
-<html>
-    <head>
-        <title>Web-devs needed</title>
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    </head>
-        
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Archivo Black";
-            background-color: rgb(240, 244, 248);
-            color: rgb(43, 43, 67);
-        }
-        
-        nav {
-            background-color: rgb(240, 240, 240);
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-        
-        nav button {
-            background-color: transparent;
-            color: rgb(64, 89, 255);
-            border: none;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 0 15px;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.5s, color 0.5s;
-        }
-        
-        nav button:hover {
-            background-color: rgba(64, 89, 255, 0.1);
-            color: rgb(0, 18, 158);
-        }
-        
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-            text-align: right;
-        }
-        
-        .hero-box {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            box-sizing: border-box;
-            background: linear-gradient(135deg, rgb(110, 139, 255), rgb(171, 203, 255));
-            color: white;
-            padding: 120px 60px 40px 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            justify-content: center;
-        }
-    
-        .hero-box h1 {
-            font-size: 40px;
-            margin: 0 0 10px 0;
-        }
-        
-        .hero-box p {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-        
-        .cta-btn {
-            font-family: "archivo black";
-            background-color: rgb(64, 89, 255);
-            color: rgb(240, 240, 240);
-            border: none;
-            padding: 16px 36px;
-            font-size: 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.5s, box-shadow 0.5s;
-        }
-        
-        .cta-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(64, 89, 255, 0.4);
-        }
-        
-        #menu-toggle-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            background-color: rgb(240, 240, 240);
-            color: rgb(64, 89, 255);
-            border: none;
-            font-size: 20px;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-        
-        #menu-shade {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 90;
-            display: none;
-        }
-        
-        #sidebar-menu {
-            position: fixed;
-            top: 0;
-            left: -260px;
-            width: 240px;
-            height: 100vh;
-            background-color: rgb(240, 240, 240);
-            padding: 80px 10px 20px 10px;
-            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
-            z-index: 95;
-            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        #sidebar-menu.open {
-            left: 0;
-        }
-        
-        #menu-shade.open {
-            display: block;
-        }
-        
-        #sidebar-menu button {
-            display: block;
-            width: 100%;
-            background-color: transparent;
-            color: rgb(74, 85, 104);
-            border: none;
-            font-size: 18px;
-            font-family: "Archivo Black";
-            text-align: left;
-            padding: 15px 20px;
-            margin: 10px 0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        #sidebar-menu button:hover {
-            background-color: rgba(64, 89, 255, 0.08);
-            color: rgb(64, 89, 255);
-        }
-
-        .faq-container {
-            max-width: 600px;
-            margin: 80px auto 20px auto;
-            padding: 0 20px;
-        }
-
-        .faq-card {
-            background-color: rgb(240, 240, 240);
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .faq-header {
-            background-color: rgb(240, 244, 248);
-            color: rgb(64, 89, 255);
-            padding: 20px;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-arrow {
-            transform: rotate(-90deg);
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-content {
-            max-height: 0;
-            transition: max-height 0.4s ease-out;
-        }
-        
-        .faq-content p {
-            color: rgb(74, 85, 104);
-            padding: 20px;
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .faq-card.open .faq-content {
-            max-height: 200px;
-        }
-        
-        .faq-card.open .faq-arrow {
-            transform: rotate(90deg);
-        }
-        
-        .form-container {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: rgb(240, 240, 240);
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            text-align: left;
-        }
-        
-        .form-container h2 {
-            color: rgb(64, 89, 255);
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        
-        .form-container label {
-            display: block;
-            color: rgb(113, 128, 150);
-            font-size: 12px;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .form-container input[type="text"], 
-        
-        .form-container select, 
-        
-        .form-container textarea {
-            width: 100%;
-            box-sizing: border-box;
-            font-family: sans-serif;
-            font-size: 16px;
-            padding: 12px;
-            border: 1px solid rgb(226, 232, 240);
-            border-radius: 8px;
-            background-color: rgb(247, 250, 252);
-            color: rgb(45, 55, 72);
-            margin-bottom: 20px;
-            outline: none;
-        }
-
-        .form-container textarea {
-            height: 120px;
-            resize: none;
-        }
-        
-        #copy-form-btn {
-            font-family: "Archivo Black";
-            background-color: rgb(64, 89, 255);
-            color: rgb(240, 240, 240);
-            border: none;
-            width: 100%;
-            padding: 16px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-        
-        #copy-form-btn:hover {
-            transform: scale(1.02);
-            background-color: rgb(0, 18, 158);
-        }
-
-        #copy-success-msg {
-            display: none;
-            color: rgb(64, 89, 255);
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-
-        #join-screen {
-            text-align: center;
-        }
-
-        #join-screen h1 {
-            color: rgb(64, 89, 255);
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        
-        .avatars {
-            display: block;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px auto;
-            border-radius: 50%; 
-            border: 3px solid rgb(255, 255, 255);
-            background-color: rgb(240, 244, 248);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .team-content h3 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
-            color: rgb(43, 43, 67);
-            text-align: center; 
-        }
-        
-        .roster-container {
-            max-width: 900px;
-            margin: 80px auto 20px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-        
-        .roster-container h1 {
-            color: rgb(64, 89, 255);
-            font-size: 28px;
-            margin-bottom: 30px;
-        }
-        
-        .roster-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .roster-card {
-            background-color: rgb(240, 240, 240);
-            width: 280px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            text-align: left;
-        }
-        
-        .roster-header h3 {
-            margin: 0;
-            padding-left: 10px;
-            font-size: 16px;
-            color: rgb(43, 43, 67);
-        }
-
-        .member-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0 0 0;
-            font-family: sans-serif;
-        }
-        
-        .member-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgb(226, 232, 240);
-        }
-        
-        .member-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .lvl-badge {
-            font-family: "Archivo Black";
-            font-size: 10px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: white;
-        }
-        
-        .lvl-1 { 
-            background-color: rgb(150, 150, 150); 
-            
-        }
-        
-        .lvl-2 { 
-            background-color: rgb(64, 89, 255); 
-            
-        }
-        
-        .lvl-3 { 
-            background-color: rgb(18, 255, 156);
-        }
-        
-        .lvl-4 { 
-            background-color: rgb(255, 215, 0); 
-            
-        }
-        
-        .lvl-5 { 
-            background-color: rgb(255, 87, 51); 
-            
-        }
-        
-        .ka-profile-link {
-            font-family: "Archivo Black";
-            font-size: 11px;
-            color: rgb(64, 89, 255);
-            text-decoration: none;
-            background-color: rgba(64, 89, 255, 0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .ka-profile-link:hover {
-            background-color: rgb(64, 89, 255);
-            color: white;
-        }
-
-
-    </style>
-    
-    <body>
-        
-        <nav>
-        <button id="menu-toggle-btn" onClick="toggleMenu()">☰</button>
-        <div id="menu-shade" onClick="toggleMenu()"></div>
-        <nav id="sidebar-menu">
-        
-        <button onClick="goToPage('home-screen')">Home</button>
-        
-        <button onClick="goToPage('about-screen')">About</button>
-        
-        <button onClick="goToPage('join-screen')">Join</button>
-        
-        <button onClick="goToPage('participant-screen')">Participants</button>
-
-        <button onClick="goToPage('challenges-screen')">Challenges</button>
-
-        <button onClick="goToPage('teams-screen')">Teams</button>
-        
-        <button onClick="goToPage('lead-screen')">Lead</button>
-        
-        <button onClick="goToPage('faq-screen')">FAQ</button>
-
-    </nav>
-            
-        </nav>
-        
-        <div class = "page active" id = "home-screen">
-            <div class = "hero-box">
-                <h1> Contest 2027</h1>
-                <p>Ultimate collaboration + design challenges</p>
-                <button class = "cta-btn" onClick = "goToPage('join-screen')">Join Now</button>
-            </div>
-        </div>
-        
-        <div class = "page" id = "about-screen">
-            <h1>About</h1>
-            <p>About info here</p>
-        </div>
-        
-        <div class="page" id="join-screen">
-            
-            <div class="faq-container">
-                <h1>HOW JOINING WORKS</h1>
-                <div class="faq-card">
-                    <div class="faq-header" onClick="toggleFaq(this)">
-                        <span>DOES SIGNING UP GUARANTEE A SPOT?</span>
-                        <span class="faq-arrow"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z"/></svg></span>
-                    </div>
-                    <div class="faq-content">
-                        <p>Due to limited spaces, not everyone will be placed on a team.</p>
-                    </div>
-                </div>
-            </div>
-        
-            <div class="form-container">
-                <h2>SUBMIT APPLICATION</h2>
-        
-                <label>YOUR KHAN ACADEMY USERNAME</label>
-                <input type="text" id="form-name" placeholder="Ex. Bristlefrost">
-        
-                <label>HOW MANY HOURS WILL YOU CODE PER WEEK?</label>
-                <select id="form-experience">
-                    <option value="5-10 Hours">5-10 Hours</option>
-                    <option value="10-15 Hours">10-15 Hours</option>
-                    <option value="15+ Hours">15+ Hours</option>
-                </select>
-        
-                <label>WHAT IS YOUR BEST PROGRAM?</label>
-
-                <input type="text" id="form-link" placeholder="copy/paste link here">
-        
-                <label>ANYTHING ELSE YOU WANT TO TELL US?</label>
-                <textarea id="form-bio" placeholder="Ex. Any skills? Past participation? Special requests?"></textarea>
-        
-                <button id="copy-form-btn" onClick="generateAndCopyApp()">BUILD & COPY APPLICATION</button>
-                <div id="copy-success-msg">Message successfully copied! Post it in the join thread in the T&T.</div>
-            </div>
-        
-        </div>
-        
-        <div class="page" id="teams-screen">
-            <div class="teams-container">
-                <h1>OFFICIAL TEAMS</h1>
-                
-                <div class="teams-grid">
-                    
-                    <div class="team-card">
-                        <div class="team-banner" style="background-color: rgb(64, 89, 255);"></div>
-                        <div class="team-content">
-                            <img src="https://www.khanacademy.org/computer-programming/axolleration-seed/4625469162700800/latest.png" class="avatars">
-                            <h3>TEAM 1</h3>
-                            <p class="team-bio">description of team 1.</p>
-                            <button class="team-view-btn" onClick="goToPage('participant-screen')">VIEW ALL MEMBERS</button>
-                        </div>
-                    </div>
-        
-                    <div class="team-card">
-                        <div class="team-banner" style="background-color: rgb(18, 255, 156);"></div>
-                        <div class="team-content">
-                            <img src="https://www.khanacademy.org/computer-programming/axolleration-seed/4625469162700800/latest.png" class="avatars">
-                            <h3>TEAM 2</h3>
-                            <p class="team-bio">description of team 2.</p>
-                            <button class="team-view-btn" onClick="goToPage('participant-screen')">VIEW ALL MEMBERS</button>
-                        </div>
-                    </div>
-        
-                    <div class="team-card">
-                        <div class="team-banner" style="background-color: rgb(255, 215, 0);"></div>
-                        <div class="team-content">
-                            <img src="https://www.khanacademy.org/computer-programming/axolleration-seed/4625469162700800/latest.png" class="avatars">
-                            <h3>TEAM 3</h3>
-                            <p class="team-bio">description of team 3.</p>
-                            <button class="team-view-btn" onClick="goToPage('participant-screen')">VIEW ALL MEMBERS</button>
-                        </div>
-                    </div>
-        
-                </div>
-            </div>
-        </div>
-        
-        <div class = "page" id = "lead-screen">
-            <h1>Lead</h1>
-            <p>leaderboard here</p>
-        </div>
-        
-        <div class = "page" id = "faq-screen">
-            <h1>FAQ</h1>
-            <p>question 1 here</p>
-        </div>
-        
-        <div class = "page" id = "challenges-screen">
-            <h1>Challenges</h1>
-            <p>challenge 1</p>
-        </div>
-        
-        <div class="page" id="participant-screen">
-            <div class="roster-container">
-                <h1>CONTESTANT ROSTERS</h1>
-                
-                <div class="roster-grid" id="dynamic-roster-grid"></div>
-            </div>
-        </div>
-
-        
-    </body>
-    <script src="app.js"></script>
-
+	
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+	<title>WIP (what does that mean)</title>
+	<style>
+		
+		
+		/* Change the color as you want */
+		:root {
+			--background-color: #000000;
+		}
+		
+		
+		html, body, #wrapper {
+			overflow: hidden;
+			width: 100%;
+		    height: 100%;
+			margin: 0px;
+			padding: 0px;
+		    width: calc(100% + 1px);
+		}
+		
+		body {
+		    background-color: var(--background-color);
+		}
+		
+		
+		canvas {
+			width: fit-content;
+			height: fit-content;
+		}
+		
+		canvas:focus {
+			outline: none;
+		}
+		
+		/* Automatically fits to the remaining height and centers the canvas it contains */
+		#wrapper {
+			padding: 0px;
+			margin: 0px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+		}
+		
+</style>
+</head>
+<body id="wrapper">
+    <!-- Canvases with a class of "sketch" are applied to the program in the order runPJS() is called. -->
+    <canvas class="sketch"></canvas>
+	<!-- Load the PJS library -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Khan/processing-js@master/processing.js"></script>
+	<!-- The exporter script must be loaded before the program script -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Mushy-Avocado/KA-exporter@v1.0.1/exporter.js"></script>
+	<!-- Run Khan Academy program and import PJS -->
+	<script type="application/javascript">
+		
     </body>
 </html>
